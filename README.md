@@ -164,6 +164,14 @@ Replace [`static/favicon.ico`](//github.com/escalate/hugo-split-theme/tree/maste
 favicon = "favicon.ico"
 ```
 
+### Add custom CSS
+Add the following to `config.toml`:
+```toml
+[params]
+  customCSS = "/css/style.css"
+```
+
+Now add your custom CSS to the defined location (here: `/static/css/style.css`)
 
 ### Add copyright
 Set `copyright` with the text you want for your copyright.
