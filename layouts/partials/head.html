@@ -22,7 +22,7 @@
 {{ with .Site.Params.favicon }}<link rel="icon" href="{{ . | absURL }}" />{{ end }}
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{ "assets/css/split.css" | absURL }}" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{ "/assets/css/split.css" | absURL }}" type="text/css" media="screen" />
 {{ if .Site.Params.customCSS }}
 <link rel="stylesheet" href="{{ .Site.Params.customCSS | absURL }}" type="text/css" media="screen" />
 {{ end }}
