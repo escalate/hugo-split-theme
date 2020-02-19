@@ -24,6 +24,9 @@
 <!-- Styles -->
 <link rel="stylesheet" href="{{ "assets/css/split.css" | absURL }}" type="text/css" media="screen" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
+{{ if .Site.Params.custom.css.enable }}
+<link rel="stylesheet" href="{{ "css/style.css" | absURL }}" type="text/css" media="screen" />
+{{ end }}
 
 <!-- Image Styles -->
 {{ if .Site.Params.visual.image.enable }}

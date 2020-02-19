@@ -114,6 +114,16 @@ Get the ID of the YouTube video and add it to `youtubeId`. Make sure you delete 
   youtubeId = "dk9uNWPP7EA"
 ```
 
+##### Add Custom CSS
+
+Put custom css styles in static/css/style.css and enable this css in the config:
+
+```toml
+[[params.custom.css]]
+  enable = true
+```
+
+
 ##### Additional settings
 
 Set `mute` to `true` if you want the video to play muted and `false` if you want the sound. The video is coded to autoplay and loop. If you want to change that the code can be found in [`layouts/partials/video.html`](//github.com/escalate/hugo-split-theme/tree/master/layouts/partials/video.html).
