@@ -119,7 +119,7 @@ Get the ID of the YouTube video and add it to `youtubeId`. Make sure you delete 
 Put custom css styles in static/css/style.css and enable this css in the config:
 
 ```toml
-[[params.custom.css]]
+[params.custom.css]
   enable = true
 ```
 
