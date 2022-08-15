@@ -144,10 +144,12 @@ This is what generates one link list:
     [[params.links.list1.link]]
       text = "Blog"
       url = "#"
+      new_tab = true # Default, new tab
 
     [[params.links.list1.link]]
       text = "Email"
       url = "#"
+      new_tab = false # open at same tab
 
     [[params.links.list1.link]]
       text = "Newsletter"
