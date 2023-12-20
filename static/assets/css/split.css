@@ -196,6 +196,11 @@ body.page-template-page-fullsingle-split p {
 .split-intro .tagline {
   color: #CCCCCC;
 }
+@media screen and (max-width: 800px) {
+  .split-intro .tagline {
+    font-size: 75%;
+  }
+}
 
 .split-bio {
   padding: 40px 0 20px 0;
