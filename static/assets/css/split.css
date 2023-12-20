@@ -52,6 +52,11 @@ q:before, q:after {
   content: none;
 }
 
+blockquote {
+  padding-left: 0.5em;
+  border-left: 3px solid #848d96;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
