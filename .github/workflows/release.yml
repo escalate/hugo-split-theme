@@ -1,0 +1,57 @@
+name: Release
+'on':
+  workflow_run:
+    workflows:
+      - Tests
+      - Web-Performance
+    branches:
+      - master
+    types:
+      - completed
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for Go files
+        id: check_go
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*.go"
+
+      - name: Fetch all tags
+        if: steps.check_go.outputs.files_exists == 'true'
+        run: git fetch --force --tags
+
+      - name: Set up Go
+        if: steps.check_go.outputs.files_exists == 'true'
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Install GoReleaser
+        if: steps.check_go.outputs.files_exists == 'true'
+        uses: goreleaser/goreleaser-action@v5
+        with:
+          install-only: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Create Github release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ "${{ steps.check_go.outputs.files_exists }}" == "true" ]]; then
+            npx -p @semantic-release/changelog -p @semantic-release/exec -p @semantic-release/git semantic-release
+          else
+            npx semantic-release
+          fi

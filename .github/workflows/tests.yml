@@ -1,0 +1,274 @@
+name: Tests
+'on':
+  push:
+    branches:
+      - master
+  pull_request:
+jobs:
+  editorconfig:
+    name: Editorconfig
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install editorconfig-checker
+        run: |
+          gh release download --pattern "*linux-amd64.tar.gz" --dir /tmp
+          tar --extract --gzip --strip-components 1 --file /tmp/ec-linux-amd64.tar.gz --directory /tmp
+          chmod +x /tmp/ec-linux-amd64
+          mv /tmp/ec-linux-amd64 /usr/local/bin/ec
+        env:
+          GH_REPO: editorconfig-checker/editorconfig-checker
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Run editorconfig-checker
+        run: |
+          ec
+
+  dockerfile:
+    name: Dockerfile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for Dockerfile files
+        id: check_dockerfile
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/Dockerfile*"
+
+      - name: Install hadolint
+        if: steps.check_dockerfile.outputs.files_exists == 'true'
+        run: |
+          gh release download --pattern "*Linux-x86_64" --dir /tmp
+          chmod +x /tmp/hadolint-Linux-x86_64
+          mv /tmp/hadolint-Linux-x86_64 /usr/local/bin/hadolint
+        env:
+          GH_REPO: hadolint/hadolint
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Run hadolint
+        if: steps.check_dockerfile.outputs.files_exists == 'true'
+        run: |
+          find . -name "Dockerfile*" -not -name "Dockerfile.j2" -not -path "*/ansible_collections/*" -print0 | xargs -0 -I{} hadolint "{}"
+
+  shell:
+    name: Shell
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for Shell files
+        id: check_shell
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*.sh"
+
+      - name: Install shellcheck
+        if: steps.check_shell.outputs.files_exists == 'true'
+        run: |
+          gh release download --pattern "*linux.x86_64.tar.xz" --dir /tmp
+          tar --extract --xz --strip-components 1 --file /tmp/shellcheck-*.linux.x86_64.tar.xz --directory /tmp
+          chmod +x /tmp/shellcheck
+          mv /tmp/shellcheck /usr/local/bin/shellcheck
+        env:
+          GH_REPO: koalaman/shellcheck
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Run shellcheck
+        if: steps.check_shell.outputs.files_exists == 'true'
+        run: |
+          find . -name "*.sh" -not -path "*/ansible_collections/*" -print0 | xargs -0 -I{} shellcheck --external-sources "{}"
+
+  yaml:
+    name: YAML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for YAML files
+        id: check_yaml
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*.yml"
+
+      - name: Install yamllint
+        if: steps.check_yaml.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check yamllint
+
+      - name: Run yamllint
+        if: steps.check_yaml.outputs.files_exists == 'true'
+        run: |
+          yamllint --strict .
+
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for Python files
+        id: check_python
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*.py"
+
+      - name: Install flake8
+        if: steps.check_python.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check flake8
+
+      - name: Run flake8
+        if: steps.check_python.outputs.files_exists == 'true'
+        run: |
+          flake8 --show-source .
+
+      - name: Install isort
+        if: steps.check_python.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check isort[colors]
+
+      - name: Run isort
+        if: steps.check_python.outputs.files_exists == 'true'
+        run: |
+          isort . --check-only --diff --color
+
+      - name: Check for Tox file
+        id: check_tox
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "tox.ini"
+
+      - name: Install tox
+        if: steps.check_tox.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check tox
+
+      - name: Install test dependencies
+        if: steps.check_tox.outputs.files_exists == 'true'
+        run: |
+          make dev-requirements
+
+      - name: Run tox
+        if: steps.check_tox.outputs.files_exists == 'true'
+        run: |
+          tox
+
+  ansible:
+    name: Ansible
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for Ansible files
+        id: check_ansible
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "tasks, meta"
+
+      - name: Set up Python 3.x
+        if: steps.check_ansible.outputs.files_exists == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install ansible
+        if: steps.check_ansible.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check ansible
+
+      - name: Install ansible-lint
+        if: steps.check_ansible.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check ansible-lint
+
+      - name: Run ansible-lint
+        if: steps.check_ansible.outputs.files_exists == 'true'
+        run: |
+          ansible-lint --force-color .
+
+      - name: Check for Molecule files
+        id: check_molecule
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "molecule"
+
+      - name: Install molecule
+        if: steps.check_molecule.outputs.files_exists == 'true'
+        run: |
+          pip3 install --disable-pip-version-check molecule molecule-plugins[docker] pytest-testinfra
+
+      - name: Run molecule
+        if: steps.check_molecule.outputs.files_exists == 'true'
+        run: |
+          molecule test --all
+
+  docker-compose:
+    name: Docker-Compose
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for Docker-Compose test file
+        id: check_docker_compose_test
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "docker-compose.test.yml"
+
+      - name: Run docker-compose test
+        if: steps.check_docker_compose_test.outputs.files_exists == 'true'
+        run: |
+          docker compose --file docker-compose.test.yml build
+
+  go:
+    name: Go
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check for Go files
+        id: check_go
+        uses: andstor/file-existence-action@v2
+        with:
+          files: "**/*.go"
+
+      - name: Set up Go
+        if: steps.check_go.outputs.files_exists == 'true'
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
+
+      - name: Run go vet
+        if: steps.check_go.outputs.files_exists == 'true'
+        run: |
+          go vet ./...
+
+      - name: Run go test
+        if: steps.check_go.outputs.files_exists == 'true'
+        run: |
+          go test -v -cover ./...
+
+      - name: Install staticcheck
+        if: steps.check_go.outputs.files_exists == 'true'
+        run: |
+          gh release download --pattern "*linux_amd64.tar.gz" --dir /tmp
+          tar --extract --gzip --strip-components 1 --file /tmp/staticcheck_linux_amd64.tar.gz --directory /tmp
+          chmod +x /tmp/staticcheck
+          mv /tmp/staticcheck /usr/local/bin/staticcheck
+        env:
+          GH_REPO: dominikh/go-tools
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - name: Run staticcheck
+        if: steps.check_go.outputs.files_exists == 'true'
+        run: |
+          staticcheck
