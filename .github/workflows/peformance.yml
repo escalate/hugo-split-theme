@@ -44,22 +44,46 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Run sitespeed.io for example site with image
+      - name: Run sitespeed.io for example site with image in desktop mode
         run: |
-          docker compose --file tests/exampleSiteWithImage/docker-compose.yml up --exit-code-from sitespeed
+          rm --recursive --force tests/exampleSiteWithImage/sitespeed-result
+          docker compose --file tests/exampleSiteWithImage/docker-compose.desktop.yml up --exit-code-from sitespeed
 
-      - name: Upload sitespeed.io result for example site with image
+      - name: Upload sitespeed.io result for example site with image in desktop mode
         uses: actions/upload-artifact@v4
         with:
-          name: sitespeed.io-example-site-with-image
+          name: sitespeed.io-example-site-with-image-desktop
           path: tests/exampleSiteWithImage/sitespeed-result
 
-      - name: Run sitespeed.io for example site with video
+      - name: Run sitespeed.io for example site with image in mobile mode
         run: |
-          docker compose --file tests/exampleSiteWithVideo/docker-compose.yml up --exit-code-from sitespeed
+          rm --recursive --force tests/exampleSiteWithImage/sitespeed-result
+          docker compose --file tests/exampleSiteWithImage/docker-compose.mobile.yml up --exit-code-from sitespeed
 
-      - name: Upload sitespeed.io result for example site with video
+      - name: Upload sitespeed.io result for example site with image in mobile mode
         uses: actions/upload-artifact@v4
         with:
-          name: sitespeed.io-example-site-with-video
+          name: sitespeed.io-example-site-with-image-mobile
+          path: tests/exampleSiteWithImage/sitespeed-result
+
+      - name: Run sitespeed.io for example site with video in desktop mode
+        run: |
+          rm --recursive --force tests/exampleSiteWithVideo/sitespeed-result
+          docker compose --file tests/exampleSiteWithVideo/docker-compose.desktop.yml up --exit-code-from sitespeed
+
+      - name: Upload sitespeed.io result for example site with video in desktop mode
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed.io-example-site-with-video-desktop
+          path: tests/exampleSiteWithVideo/sitespeed-result
+
+      - name: Run sitespeed.io for example site with video in mobile mode
+        run: |
+          rm --recursive --force tests/exampleSiteWithVideo/sitespeed-result
+          docker compose --file tests/exampleSiteWithVideo/docker-compose.mobile.yml up --exit-code-from sitespeed
+
+      - name: Upload sitespeed.io result for example site with video in mobile mode
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed.io-example-site-with-video-mobile
           path: tests/exampleSiteWithVideo/sitespeed-result

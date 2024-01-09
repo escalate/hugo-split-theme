@@ -17,4 +17,4 @@ services:
         target: /sitespeed.io
     depends_on:
       - hugo
-    command: ["http://hugo:1313/index.html", "--budget.configPath=budget.json"]
+    command: ["--budget.configPath=budget.desktop.json", "urls.txt"]
