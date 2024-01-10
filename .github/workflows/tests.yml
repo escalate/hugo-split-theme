@@ -12,6 +12,8 @@ jobs:
       - name: Check out repository
         if: github.event_name == 'pull_request'
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node.js
         if: github.event_name == 'pull_request'
