@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           gh release download --pattern "*linux_x64.tar.gz" --dir /tmp
-          tar --extract --gzip --strip-components 1 --file /tmp/gitleaks_*_linux_x64.tar.gz --directory /tmp
+          tar --extract --gzip --file /tmp/*linux_x64.tar.gz --directory /tmp
           chmod +x /tmp/gitleaks
           mv /tmp/gitleaks /usr/local/bin/gitleaks
 
