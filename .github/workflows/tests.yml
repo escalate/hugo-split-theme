@@ -5,6 +5,57 @@ name: Tests
       - master
   pull_request:
 jobs:
+  commits:
+    name: Commits
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        if: github.event_name == 'pull_request'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
+      - name: Install commitlint
+        if: github.event_name == 'pull_request'
+        run: |
+          npm install -g @commitlint/cli @commitlint/config-conventional
+
+      - name: Run commitlint
+        if: github.event_name == 'pull_request'
+        run: |
+          commitlint \
+          --from "${{ github.event.pull_request.base.sha }}" \
+          --to "${{ github.event.pull_request.head.sha }}" \
+          --color \
+          --verbose
+
+  secrets:
+    name: Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install gitleaks
+        env:
+          GH_REPO: gitleaks/gitleaks
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          gh release download --pattern "*linux_x64.tar.gz" --dir /tmp
+          tar --extract --gzip --strip-components 1 --file /tmp/gitleaks_*_linux_x64.tar.gz --directory /tmp
+          chmod +x /tmp/gitleaks
+          mv /tmp/gitleaks /usr/local/bin/gitleaks
+
+      - name: Run gitleaks
+        run: |
+          gitleaks detect --no-banner --redact
+
   editorconfig:
     name: Editorconfig
     runs-on: ubuntu-latest
@@ -13,14 +64,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install editorconfig-checker
+        env:
+          GH_REPO: editorconfig-checker/editorconfig-checker
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           gh release download --pattern "*linux-amd64.tar.gz" --dir /tmp
           tar --extract --gzip --strip-components 1 --file /tmp/ec-linux-amd64.tar.gz --directory /tmp
           chmod +x /tmp/ec-linux-amd64
           mv /tmp/ec-linux-amd64 /usr/local/bin/ec
-        env:
-          GH_REPO: editorconfig-checker/editorconfig-checker
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Run editorconfig-checker
         run: |
@@ -41,13 +92,13 @@ jobs:
 
       - name: Install hadolint
         if: steps.check_dockerfile.outputs.files_exists == 'true'
+        env:
+          GH_REPO: hadolint/hadolint
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           gh release download --pattern "*Linux-x86_64" --dir /tmp
           chmod +x /tmp/hadolint-Linux-x86_64
           mv /tmp/hadolint-Linux-x86_64 /usr/local/bin/hadolint
-        env:
-          GH_REPO: hadolint/hadolint
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Run hadolint
         if: steps.check_dockerfile.outputs.files_exists == 'true'
@@ -69,14 +120,14 @@ jobs:
 
       - name: Install shellcheck
         if: steps.check_shell.outputs.files_exists == 'true'
+        env:
+          GH_REPO: koalaman/shellcheck
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           gh release download --pattern "*linux.x86_64.tar.xz" --dir /tmp
           tar --extract --xz --strip-components 1 --file /tmp/shellcheck-*.linux.x86_64.tar.xz --directory /tmp
           chmod +x /tmp/shellcheck
           mv /tmp/shellcheck /usr/local/bin/shellcheck
-        env:
-          GH_REPO: koalaman/shellcheck
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Run shellcheck
         if: steps.check_shell.outputs.files_exists == 'true'
@@ -259,14 +310,14 @@ jobs:
 
       - name: Install staticcheck
         if: steps.check_go.outputs.files_exists == 'true'
+        env:
+          GH_REPO: dominikh/go-tools
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           gh release download --pattern "*linux_amd64.tar.gz" --dir /tmp
           tar --extract --gzip --strip-components 1 --file /tmp/staticcheck_linux_amd64.tar.gz --directory /tmp
           chmod +x /tmp/staticcheck
           mv /tmp/staticcheck /usr/local/bin/staticcheck
-        env:
-          GH_REPO: dominikh/go-tools
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Run staticcheck
         if: steps.check_go.outputs.files_exists == 'true'
