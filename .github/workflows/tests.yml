@@ -323,3 +323,86 @@ jobs:
         if: steps.check_go.outputs.files_exists == 'true'
         run: |
           staticcheck
+
+  hugo:
+    name: Hugo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+
+      - name: Build Hugo example site with image
+        run: |
+          cd tests/exampleSiteWithImage/
+          hugo --logLevel=info --baseURL= --themesDir=../../../
+
+      - name: Upload Hugo example site with image
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-example-site-with-image
+          path: tests/exampleSiteWithImage/public
+
+      - name: Build Hugo example site with video
+        run: |
+          cd tests/exampleSiteWithVideo/
+          hugo --logLevel=info --baseURL= --themesDir=../../../
+
+      - name: Upload Hugo example site with video
+        uses: actions/upload-artifact@v4
+        with:
+          name: hugo-example-site-with-video
+          path: tests/exampleSiteWithVideo/public
+
+  sitespeed:
+    name: Sitespeed.io
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run sitespeed.io for example site with image in desktop mode
+        run: |
+          rm --recursive --force tests/exampleSiteWithImage/sitespeed-result
+          docker compose --file tests/exampleSiteWithImage/docker-compose.desktop.yml up --exit-code-from sitespeed
+
+      - name: Upload sitespeed.io result for example site with image in desktop mode
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed.io-example-site-with-image-desktop
+          path: tests/exampleSiteWithImage/sitespeed-result
+
+      - name: Run sitespeed.io for example site with image in mobile mode
+        run: |
+          rm --recursive --force tests/exampleSiteWithImage/sitespeed-result
+          docker compose --file tests/exampleSiteWithImage/docker-compose.mobile.yml up --exit-code-from sitespeed
+
+      - name: Upload sitespeed.io result for example site with image in mobile mode
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed.io-example-site-with-image-mobile
+          path: tests/exampleSiteWithImage/sitespeed-result
+
+      - name: Run sitespeed.io for example site with video in desktop mode
+        run: |
+          rm --recursive --force tests/exampleSiteWithVideo/sitespeed-result
+          docker compose --file tests/exampleSiteWithVideo/docker-compose.desktop.yml up --exit-code-from sitespeed
+
+      - name: Upload sitespeed.io result for example site with video in desktop mode
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed.io-example-site-with-video-desktop
+          path: tests/exampleSiteWithVideo/sitespeed-result
+
+      - name: Run sitespeed.io for example site with video in mobile mode
+        run: |
+          rm --recursive --force tests/exampleSiteWithVideo/sitespeed-result
+          docker compose --file tests/exampleSiteWithVideo/docker-compose.mobile.yml up --exit-code-from sitespeed
+
+      - name: Upload sitespeed.io result for example site with video in mobile mode
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed.io-example-site-with-video-mobile
+          path: tests/exampleSiteWithVideo/sitespeed-result

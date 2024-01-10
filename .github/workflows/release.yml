@@ -3,7 +3,6 @@ name: Release
   workflow_run:
     workflows:
       - Tests
-      - Web-Performance
     branches:
       - master
     types:
