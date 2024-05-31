@@ -1,13 +1,31 @@
-/*
-Template Name: Split
-Author: One Page Love
-Author URI: https://onepagelove.com
-Template URI: https://onepagelove.com/split
-Description: Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content.
-*/
+//-------------------------------------------------------------------------------
+// Variables
+//-------------------------------------------------------------------------------
 
-/* -- CSS Reset -- */
+// Colors
+$color-background   : #061C30;
+$color-text         : #848d96;
+$color-link         : #848d96;
+$color-link-hover   : #CA486d;
+$color-maverick     : #47bec7;
+$color-tagline      : #CCCCCC;
+
+// Breakpoints
+$bp-smallish        : 1200px;
+$bp-tablet          : 800px;
+$bp-mobile          : 500px;
+
+// Image
+$image-background   : url('{{ .Site.Params.visual.image.file | default "images/background.jpg" | absURL }}');
+$image-position     : {{ .Site.Params.visual.image.position | default "center center" }};
+
+// Animation
+$animation-name     : fadein;
+$animation-duration : 2s;
+
+//-------------------------------------------------------------------------------
+// Imports
+//-------------------------------------------------------------------------------
+
 @import "reset";
-
-/* -- Content -- */
 @import "content";

@@ -6,26 +6,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lora');
 
 //-------------------------------------------------------------------------------
-// Variables
-//-------------------------------------------------------------------------------
-
-// Colors
-$color-background : #061C30;
-$color-text       : #848d96;
-$color-link       : #848d96;
-$color-link-hover : #CA486d;
-$color-maverick   : #47bec7;
-$color-tagline    : #CCCCCC;
-
-// Breakpoints
-$bp-smallish      : 1200px;
-$bp-tablet        : 800px;
-$bp-mobile        : 500px;
-
-// Images
-// $image-background : url('../../images/background.jpg');
-
-//-------------------------------------------------------------------------------
 // Fade In
 //-------------------------------------------------------------------------------
 
@@ -50,7 +30,7 @@ body.page-template-page-fullsingle-split {
   line-height: 33px;
   letter-spacing: -0.2px;
   color: $color-text;
-  animation: fadein 2s;
+  animation: $animation-name $animation-duration;
 
   //-------------------------------------------------------------------------------
   // Global Styles
@@ -83,8 +63,8 @@ body.page-template-page-fullsingle-split {
   .split-image {
     width: 50%;
     height: 100vh;
-    // background-image: $image-background;
-    // background-position:center center;
+    background-image: $image-background;
+    background-position: $image-position;
     background-size:cover;
 
     @media (max-width: $bp-tablet ) {
