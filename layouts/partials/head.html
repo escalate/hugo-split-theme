@@ -1,4 +1,5 @@
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 
 <!-- SEO -->
 <title>{{ if .IsPage }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
@@ -21,19 +22,19 @@
 {{ with .Site.Params.favicon }}<link rel="icon" href="{{ . | absURL }}" />{{ end }}
 
 <!-- Styles -->
-<link rel="stylesheet" href="{{ "assets/css/split.css" | absURL }}" type="text/css" media="screen" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-{{ if .Site.Params.custom.css.enable }}
-<link rel="stylesheet" href="{{ "css/style.css" | absURL }}" type="text/css" media="screen" />
+{{ if hugo.IsServer }}
+  {{ $cssOpts := (dict "targetPath" "css/split.css" "enableSourceMap" true ) }}
+  {{ $styles := resources.Get "scss/split.scss" | resources.ExecuteAsTemplate "split.css" . | toCSS $cssOpts }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
+{{ else }}
+  {{ $cssOpts := (dict "targetPath" "css/split.css" ) }}
+  {{ $styles := resources.Get "scss/split.scss" | resources.ExecuteAsTemplate "split.css" . | toCSS $cssOpts | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}" crossorigin="anonymous" media="screen" />
 {{ end }}
 
-<!-- Image Styles -->
-{{ if .Site.Params.visual.image.enable }}
-  <style>
-  {{ if .Site.Params.visual.image.file }}
-    .fs-split .split-image { background-image: url("{{ .Site.Params.visual.image.file | absURL }}"); background-position: {{ if .Site.Params.visual.image.position }}{{ .Site.Params.visual.image.position }}{{ else }}center center{{ end }}; }
-  {{ end }}
-  </style>
+<!-- Custom Styles -->
+{{ if .Site.Params.custom.css.enable }}
+<link rel="stylesheet" href="{{ "css/style.css" | absURL }}" type="text/css" media="screen" />
 {{ end }}
 
 <!-- Google Analytics -->
