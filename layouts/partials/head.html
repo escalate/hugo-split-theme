@@ -34,10 +34,10 @@
 
 <!-- Custom Styles -->
 {{ if .Site.Params.custom.css.enable }}
-<link rel="stylesheet" href="{{ "css/style.css" | absURL }}" type="text/css" media="screen" />
+  <link rel="stylesheet" href="{{ "css/style.css" | absURL }}" type="text/css" media="screen" />
 {{ end }}
 
 <!-- Google Analytics -->
-{{ if and (.Site.GoogleAnalytics) (not (in (printf "%#v" .Site.BaseURL) "localhost")) }}
+{{ if and (.Site.Config.Services.GoogleAnalytics.ID) (not (in (printf "%#v" .Site.BaseURL) "localhost")) }}
   {{ template "_internal/google_analytics.html" . }}
 {{ end }}

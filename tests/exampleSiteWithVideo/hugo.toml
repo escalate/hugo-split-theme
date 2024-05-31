@@ -10,11 +10,13 @@ disableHugoGeneratorInject = true
 relativeURLs = true
 uglyURLs = true
 
-# Enter your tracking code to enable Google Analytics
-googleAnalytics = ""
-
 # Copyright
 copyright = "&copy;2024 Your Name"
+
+[services]
+  [services.googleAnalytics]
+    # Enter your tracking code to enable Google Analytics
+    ID = ""
 
 [params]
 

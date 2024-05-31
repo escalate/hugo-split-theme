@@ -188,10 +188,12 @@ copyright = "&copy;2024 Your Name"
 
 ### Add Google Analytics
 
-Enable Google Analytics by adding your tracking id to `googleAnalytics`. Leave empty or remove if you don't want.
+Enable Google Analytics by adding your tracking id to `services.googleAnalytics`. Leave empty or remove if you don't want.
 
 ```toml
-googleAnalytics = "UA-XXXXXXXX-1"
+[services]
+  [services.googleAnalytics]
+    ID = "UA-XXXXXXXX-1"
 ```
 
 
