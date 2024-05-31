@@ -24,7 +24,7 @@ jobs:
       - name: Build Hugo example site with image
         run: |
           cd tests/exampleSiteWithImage/
-          hugo --logLevel=info --baseURL= --themesDir=../../../
+          hugo --environment=development --logLevel=info --baseURL= --themesDir=../../../
 
       - name: Upload Hugo example site with image
         uses: actions/upload-artifact@v4
@@ -35,7 +35,7 @@ jobs:
       - name: Build Hugo example site with video
         run: |
           cd tests/exampleSiteWithVideo/
-          hugo --logLevel=info --baseURL= --themesDir=../../../
+          hugo --environment=development --logLevel=info --baseURL= --themesDir=../../../
 
       - name: Upload Hugo example site with video
         uses: actions/upload-artifact@v4

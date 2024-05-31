@@ -5,7 +5,7 @@ services:
       - type: bind
         source: ../../../
         target: /src
-    command: ["hugo", "server", "--logLevel=info", "--bind=0.0.0.0", "--baseURL=http://hugo", "--disableLiveReload", "--source=/src/hugo-split-theme/tests/exampleSiteWithImage", "--themesDir=/src"]
+    command: ["hugo", "server", "--environment=production", "--logLevel=info", "--bind=0.0.0.0", "--baseURL=http://hugo", "--disableLiveReload", "--source=/src/hugo-split-theme/tests/exampleSiteWithImage", "--themesDir=/src"]
     ports:
       - "1313:1313"
 

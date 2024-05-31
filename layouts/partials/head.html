@@ -22,7 +22,7 @@
 {{ with .Site.Params.favicon }}<link rel="icon" href="{{ . | absURL }}" />{{ end }}
 
 <!-- Styles -->
-{{ if hugo.IsServer }}
+{{ if hugo.IsDevelopment }}
   {{ $cssOpts := (dict "targetPath" "css/split.css" "enableSourceMap" true ) }}
   {{ $styles := resources.Get "scss/split.scss" | resources.ExecuteAsTemplate "split.css" . | toCSS $cssOpts }}
   <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen" />
@@ -38,6 +38,6 @@
 {{ end }}
 
 <!-- Google Analytics -->
-{{ if and (.Site.Config.Services.GoogleAnalytics.ID) (not (in (printf "%#v" .Site.BaseURL) "localhost")) }}
+{{ if and (.Site.Config.Services.GoogleAnalytics.ID) (not hugo.IsDevelopment) }}
   {{ template "_internal/google_analytics.html" . }}
 {{ end }}
