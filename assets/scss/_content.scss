@@ -283,6 +283,11 @@ body.page-template-page-fullsingle-split {
   dl dd {
     margin-bottom: 10px;
   }
+
+  blockquote {
+    padding-left: 0.5em;
+    border-left: 3px solid $color-text;
+  }
 }
 
 //-------------------------------------------------------------------------------
