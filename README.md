@@ -210,7 +210,7 @@ Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your b
 
 ## Contributing
 
-Did you found a bug or got an idea for a new feature? Feel free to use the [issue tracker](https://github.com/escalate/hugo-split-theme/issues) to let me know. Or make directly a [pull request](https://github.com/escalate/hugo-split-theme/pulls).
+Did you found a bug or got an idea for a new feature? Feel free to use the [issue tracker](https://github.com/escalate/hugo-split-theme/issues) to let me know. Or make directly a [pull request](https://github.com/escalate/hugo-split-theme/pulls). See also the [Contributing](./CONTRIBUTING.md) notes.
 
 
 ## License
