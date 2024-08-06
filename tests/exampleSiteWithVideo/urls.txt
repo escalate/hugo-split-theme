@@ -1,3 +1,4 @@
 http://hugo:1313/index.html
 http://hugo:1313/commonmark.html
 http://hugo:1313/long-text.html
+http://hugo:1313/no-video.html

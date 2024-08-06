@@ -76,6 +76,15 @@ Set `enable` to `true`. Add your image to the `static` folder and change `file` 
   position = "center center"
 ```
 
+You can control displaying of the image on a per-page basis by configuring `visual.image.enable` on each respective page's FrontMatter:
+
+```markdown
++++
+visual.image.enable = false
++++
+
+# Privacy statement
+```
 
 ### Use a video
 
@@ -84,6 +93,8 @@ First, disable the image by setting `enable` to `false` in `[params.visual.image
 Second, enable the video by setting `enable` to `true` in `[params.visual.video]`.
 
 You can either use a video that you host or one that is on YouTube.
+
+Just like with [an image](#use-an-image) you can not display a video altogether on particular pages by setting `visual.video.enable = false` in the page's FrontMatter.
 
 ##### Use your own video
 

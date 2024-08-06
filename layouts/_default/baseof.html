@@ -10,14 +10,14 @@
   <div class="fs-split">
 
     <!-- Image -->
-    {{ if .Site.Params.visual.image.enable }}
+    {{ if .Params.visual.image.enable | default .Site.Params.visual.image.enable }}
 
       <div class="split-image">
 
       </div>
 
     <!-- Video -->
-    {{ else if .Site.Params.visual.video.enable }}
+    {{ else if .Params.visual.video.enable | default .Site.Params.visual.video.enable }}
 
       {{ partial "video" . }}
 
