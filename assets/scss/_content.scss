@@ -61,7 +61,7 @@ body.page-template-page-fullsingle-split {
     background-size:cover;
 
     @media (max-width: $bp-tablet ) {
-      height: 80vh;
+      max-height: 30vh;
       width: 100%;
     }
 
