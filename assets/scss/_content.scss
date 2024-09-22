@@ -130,6 +130,11 @@ body.page-template-page-fullsingle-split {
 
   .tagline {
     color: $color-tagline;
+    line-height: 120%;
+
+    @media screen and (max-width: $bp-tablet) {
+      font-size: 42px;
+    }
   }
 
 }
