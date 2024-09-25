@@ -13,6 +13,9 @@ uglyURLs = true
 # Copyright
 copyright = "&copy;2024 Your Name"
 
+# Whether you purchased the license from the author.
+licensed = false
+
 [services]
   [services.googleAnalytics]
     # Enter your tracking code to enable Google Analytics
