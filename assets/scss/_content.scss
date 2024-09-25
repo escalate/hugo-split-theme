@@ -126,6 +126,10 @@ body.page-template-page-fullsingle-split {
     margin-bottom: 40px;
     letter-spacing: 0.4px;
     color: $color-maverick;
+
+    a {
+      color: $color-maverick;
+    }
   }
 
   .tagline {
@@ -288,6 +292,31 @@ body.page-template-page-fullsingle-split {
     padding-left: 0.5em;
     border-left: 3px solid $color-text;
   }
+
+  ul.page-list {
+    margin-left: 0.1em;
+    list-style-type: none;
+
+    li {
+      line-height: 1.0em;
+      div.page-list-date {
+        font-size: 70%;
+        margin-bottom: 0;
+      }
+      margin-bottom: 0.7em;
+      background-color: lighten($color-background, 5);
+      padding-left: 5px;
+      padding-top: 1px;
+      padding-right: 5px;
+      padding-bottom: 5px;
+      border-radius: 6px;
+
+      a {
+        border-bottom: 0;
+      }
+    }
+  }
+
 }
 
 //-------------------------------------------------------------------------------
