@@ -1,3 +1,21 @@
 {{ define "main" }}
 
+<div class="split-bio">
+{{ .Content }}
+
+<ul class="page-list split-list">
+{{ range .RegularPages }}
+<li>
+	<a href="{{ .RelPermalink }}">
+		<div class="page-list-date">
+		{{ .Date | time.Format ":date_medium" }}
+		</div>
+		{{ .LinkTitle }}
+	</a>
+</li>
+{{ end }}
+</ul>
+
+</div>
+
 {{ end }}
