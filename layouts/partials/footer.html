@@ -1,9 +1,14 @@
 <div class="split-credit">
-  <p>{{ .Site.Copyright | safeHTML }} - <a href="https://onepagelove.com/split" title="Split Template">Split Template</a> by <a href="https://onepagelove.com" title="One Page Love">One Page Love</a></p>
+  <p>{{ .Site.Copyright | safeHTML }}
+  {{ if not .Site.Params.licensed }}
+  &ndash; <a href="https://onepagelove.com/split" title="Split Template">Split Template</a> by <a href="https://onepagelove.com" title="One Page Love">One Page Love</a>
+  {{- end }}</p>
 
+  {{ if not .Site.Params.licensed }}
   {{ "<!--" | safeHTML }}
-  {{ "To edit this credit you can remove the CC3.0 license for only $5 here: https://onepagelove.com/split" | safeHTML }}
-  {{ "this really helps contribute towards us developing more templates and means the world to me!" | safeHTML }}
+  {{ "To remove this credit you can remove the CC3.0 license for only $9 here: https://onepagelove.com/split" | safeHTML }}
+  {{ "This really helps contribute towards us developing more templates and means the world to me!" | safeHTML }}
   {{ "Cheers, Rob (@robhope)" | safeHTML }}
   {{ "-->" | safeHTML }}
+  {{ end }}
 </div>
