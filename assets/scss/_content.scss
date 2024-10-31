@@ -61,7 +61,7 @@ body.page-template-page-fullsingle-split {
     background-size:cover;
 
     @media (max-width: $bp-tablet ) {
-      height: 80vh;
+      max-height: 30vh;
       width: 100%;
     }
 
@@ -130,6 +130,11 @@ body.page-template-page-fullsingle-split {
 
   .tagline {
     color: $color-tagline;
+    line-height: 120%;
+
+    @media screen and (max-width: $bp-tablet) {
+      font-size: 42px;
+    }
   }
 
 }
@@ -148,6 +153,11 @@ body.page-template-page-fullsingle-split {
 
   @media (max-width: $bp-tablet ) {
     padding: 20px 0 0 0;
+  }
+
+  @media (max-width: $bp-mobile) {
+    font-size: 16px;
+    line-height: 140%;
   }
 
   p {
