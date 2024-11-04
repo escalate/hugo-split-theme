@@ -164,7 +164,7 @@ a {
   object-fit: cover;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: $bp-smallish) {
   .leftcontent {
     display: block;
     -o-object-position: 50% 0%;
@@ -209,7 +209,7 @@ a {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $bp-tablet) {
   .name {
     margin-bottom: 20px;
   }
@@ -219,7 +219,7 @@ a {
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: $bp-mobile) {
   .bold-text {
     font-size: 42px;
     line-height: 42px;

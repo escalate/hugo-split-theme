@@ -11,9 +11,9 @@ $color-maverick     : #47bec7;
 $color-tagline      : #CCCCCC;
 
 // Breakpoints
-$bp-smallish        : 1200px;
-$bp-tablet          : 800px;
-$bp-mobile          : 500px;
+$bp-smallish        : 991px;
+$bp-tablet          : 767px;
+$bp-mobile          : 479px;
 
 // Image
 $image-background   : {{ if .Site.Params.visual.image.enable }}url('../{{ .Site.Params.visual.image.file | default "images/background.jpg" }}'){{ else }}none{{ end }};
