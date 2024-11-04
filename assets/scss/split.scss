@@ -23,6 +23,6 @@ $image-position     : {{ if .Site.Params.visual.image.enable }}{{ .Site.Params.v
 // Imports
 //-------------------------------------------------------------------------------
 
-@import "reset";
+@import "normalize";
 @import "fonts";
 @import "content";
