@@ -158,8 +158,8 @@ a {
   -webkit-flex: 0 auto;
   -ms-flex: 0 auto;
   flex: 0 auto;
-  background-image: url('../images/split.jpg');
-  background-position: 50% 50%;
+  background-image: $image-background;
+  background-position: $image-position;
   background-size: cover;
   -o-object-fit: cover;
   object-fit: cover;

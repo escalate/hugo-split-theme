@@ -17,7 +17,7 @@ $bp-mobile          : 479px;
 
 // Image
 $image-background   : {{ if .Site.Params.visual.image.enable }}url('../{{ .Site.Params.visual.image.file | default "images/background.jpg" }}'){{ else }}none{{ end }};
-$image-position     : {{ if .Site.Params.visual.image.enable }}{{ .Site.Params.visual.image.position | default "center center" }}{{ else }}0% 0%{{ end }};
+$image-position     : {{ if .Site.Params.visual.image.enable }}{{ .Site.Params.visual.image.position | default "50% 50%" }}{{ else }}0% 0%{{ end }};
 
 // Animation
 $animation-name     : fadein;
