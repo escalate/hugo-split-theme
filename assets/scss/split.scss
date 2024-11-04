@@ -24,5 +24,6 @@ $image-position     : {{ if .Site.Params.visual.image.enable }}{{ .Site.Params.v
 //-------------------------------------------------------------------------------
 
 @import "normalize";
+@import "webflow";
 @import "fonts";
 @import "content";
