@@ -28,6 +28,7 @@ After installing the Split theme successfully it requires a just a few more step
 
 Take a look inside the [`tests`](https://github.com/escalate/hugo-split-theme/tree/master/tests) folder of this theme. You'll find some example configurations. To use one of them, copy the `hugo.toml` in the root folder of your Hugo site. Feel free to customize this theme as you like.
 
+
 ### Add content
 
 #### Homepage
@@ -86,6 +87,7 @@ visual.image.enable = false
 # Privacy statement
 ```
 
+
 ### Use a video
 
 First, disable the image by setting `enable` to `false` in `[params.visual.image]`.
@@ -95,6 +97,7 @@ Second, enable the video by setting `enable` to `true` in `[params.visual.video]
 You can either use a video that you host or one that is on YouTube.
 
 Just like with [an image](#use-an-image) you can not display a video altogether on particular pages by setting `visual.video.enable = false` in the page's FrontMatter.
+
 
 ##### Use your own video
 
@@ -111,6 +114,7 @@ Add your video to the `static` folder and change `file` to the location of your 
   # youtubeId = "dk9uNWPP7EA"
 ```
 
+
 ##### Use a YouTube video
 
 Get the ID of the YouTube video and add it to `youtubeId`. Make sure you delete `file` or comment it out.
@@ -125,6 +129,7 @@ Get the ID of the YouTube video and add it to `youtubeId`. Make sure you delete 
   # file = "videos/background.mp4"
   youtubeId = "dk9uNWPP7EA"
 ```
+
 
 ##### Add Custom CSS
 
@@ -174,10 +179,11 @@ This is what generates one link list:
 `author` and `description` metadata helps search engines with how to display your site in search results. `shareImage` and `twitterHandle` help improves how your content is displayed when your site is shared across social media sites.
 
 ```toml
-author = "Jenny Jones"
-description = "Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content."
-shareImage = "images/social.jpg"
-twitterHandle = "onepagelove"
+[params]
+  author = "Jenny Jones"
+  description = "Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content."
+  shareImage = "images/social.jpg"
+  twitterHandle = "onepagelove"
 ```
 
 
