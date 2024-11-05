@@ -1,8 +1,8 @@
-<div class="split-credit">
-  <p>{{ .Site.Copyright | safeHTML }}
+<div class="credit">
+  {{ .Site.Copyright | safeHTML }}
   {{ if not .Site.Params.licensed }}
-  &ndash; <a href="https://onepagelove.com/split" title="Split Template">Split Template</a> by <a href="https://onepagelove.com" title="One Page Love">One Page Love</a>
-  {{- end }}</p>
+  &ndash; <a href="https://onepagelove.com/split" target="_blank" class="credit-links">Split Template</a> by <a href="https://onepagelove.com" target="_blank" class="credit-links">One Page Love</a>
+  {{- end }}
 
   {{ if not .Site.Params.licensed }}
   {{ "<!--" | safeHTML }}

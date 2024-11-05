@@ -1,14 +1,14 @@
-<div class="split-lists">
+<div class="links w-row">
 
   {{ range $key, $value := .Site.Params.links }}
     {{ range $key, $list := $value }}
 
     {{ if $list.link }}
-      <div class="split-list">
-        <h3>{{ $list.heading }}</h3>
-        <ul>
+      <div class="column w-col w-col-4">
+        <h3 class="text-block-2">{{ $list.heading }}</h3>
+        <ul class="list w-list-unstyled">
           {{ range $list.link }}
-            <li><a href="{{ .url | safeURL }}" title="{{ .text }}" target="{{ cond (.new_tab | default false) "_blank" "_self" }}">{{ .text }}</a></li>
+            <li><a href="{{ .url | safeURL }}" target="{{ cond (.new_tab | default false) "_blank" "_self" }}">{{ .text }}</a></li>
           {{ end }}
         </ul>
       </div>

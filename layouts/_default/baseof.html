@@ -5,16 +5,17 @@
   {{ partial "head" . }}
 </head>
 
-<body id="fullsingle" class="page-template-page-fullsingle-split">
+<body class="body">
 
-  <div class="fs-split">
+  <div class="columns w-row">
+
+    <!-- Media Side -->
+    <div class="leftcontent w-col w-col-6 w-col-stack">
 
     <!-- Image -->
     {{ if .Params.visual.image.enable | default .Site.Params.visual.image.enable }}
 
-      <div class="split-image">
-
-      </div>
+      <div class="image"></div>
 
     <!-- Video -->
     {{ else if .Params.visual.video.enable | default .Site.Params.visual.video.enable }}
@@ -22,10 +23,12 @@
       {{ partial "video" . }}
 
     {{ end }}
+    </div>
 
     <!-- Content Side -->
-    <div class="split-content">
-      <div class="split-content-vertically-center">
+    <div class="rightcontent w-col w-col-6 w-col-stack">
+
+      <div class="content">
         <!-- Intro -->
         {{ partial "intro" . }}
 
@@ -35,9 +38,10 @@
           {{ partial "bio" . }}
         {{ end }}
 
-        <!-- Footer -->
-        {{ partial "footer" . }}
+        <!-- Credit -->
+        {{ partial "credit" . }}
       </div>
+
     </div>
 
   </div>
