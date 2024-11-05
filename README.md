@@ -214,13 +214,6 @@ Enable Google Analytics by adding your tracking id to `services.googleAnalytics`
 ```
 
 
-### Support author and remove credit
-
-To remove this credit you can remove the CC3.0 license for only $9 here: https://onepagelove.com/split.
-This really helps contribute towards us developing more templates and means the world to me!
-Cheers, Rob (@robhope)
-
-
 ### Nearly finished
 
 In order to see your site in action, run Hugo's built-in local server.
@@ -240,6 +233,13 @@ Did you found a bug or got an idea for a new feature? Feel free to use the [issu
 ## License
 
 The original template is released under the [Creative Commons Attribution 3.0 License](https://github.com/escalate/hugo-split-theme/blob/master/LICENSE.md). Please keep the original attribution link when using for your own project. If you'd like to use the template without the attribution, you can check out the license option via the template [author's website](https://onepagelove.com/split).
+
+To deactivate the license text after purchase, set the value of the variable `licensed` to `true`.
+
+```toml
+[params]
+  licensed = true
+```
 
 
 ## Annotations

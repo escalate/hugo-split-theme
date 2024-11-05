@@ -13,9 +13,6 @@ uglyURLs = true
 # Copyright
 copyright = "&copy;2024 Your Name"
 
-# Whether you purchased the license from the author.
-licensed = false
-
 [services]
   [services.googleAnalytics]
     # Enter your tracking code to enable Google Analytics
@@ -28,6 +25,9 @@ licensed = false
   description = "Split is a centrally-divided layout for a professional online presence with a big image or video left with alongside content."
   shareImage = "images/social.jpg"
   twitterHandle = "onepagelove"
+
+  # Whether you purchased the license from the author.
+  licensed = false
 
   # Favicon
   favicon = "favicon.ico"
