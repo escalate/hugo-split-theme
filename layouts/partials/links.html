@@ -5,7 +5,7 @@
 
     {{ if $list.link }}
       <div class="column w-col w-col-4">
-        <h3 class="text-block-2">{{ $list.heading }}</h3>
+        <h3 class="text-block">{{ $list.heading }}</h3>
         <ul class="list w-list-unstyled">
           {{ range $list.link }}
             <li><a href="{{ .url | safeURL }}" target="{{ cond (.new_tab | default false) "_blank" "_self" }}">{{ .text }}</a></li>

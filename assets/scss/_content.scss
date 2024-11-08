@@ -40,9 +40,11 @@ a {
 }
 
 .name {
+  margin-top: 0px;
   margin-bottom: 40px;
   color: #47bec7;
   font-size: 16px;
+  font-weight: normal;
   line-height: 100%;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -72,10 +74,12 @@ a {
   text-decoration: none;
 }
 
-.text-block-2 {
+.text-block {
+  margin-top: 0px;
   margin-bottom: 20px;
   color: #485462;
   font-size: 12px;
+  font-weight: normal;
   line-height: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
