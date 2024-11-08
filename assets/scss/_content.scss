@@ -200,6 +200,10 @@ a {
     margin-bottom: 20px;
   }
 
+  .column:last-child {
+    margin-bottom: 0px;
+  }
+
   .image {
     position: static;
     height: 420px;
