@@ -112,7 +112,7 @@ copyright = "&copy;2024 Your Name"
 [[server.headers]]
     for = '/**'
     [server.headers.values]
-      Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://dummyimage.com"
+      Content-Security-Policy = "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com/embed/; img-src 'self' https://dummyimage.com"
       Referrer-Policy = 'strict-origin-when-cross-origin'
       X-Content-Type-Options = 'nosniff'
       X-Frame-Options = 'DENY'
