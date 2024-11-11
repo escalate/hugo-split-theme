@@ -4,14 +4,14 @@
             "total": 8
         },
         "transferSize": {
-            "total": 317440
+            "total": 365568
         },
         "thirdParty": {
             "requests": 1
         },
         "score": {
             "bestpractice": 93,
-            "privacy": 88,
+            "privacy": 89,
             "performance": 81
         }
     }
