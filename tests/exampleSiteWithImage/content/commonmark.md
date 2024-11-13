@@ -29,11 +29,11 @@ __Bold__
 > Blockquote
 
 * List
-* List
+  * List
 * List
 
 - List
-- List
+  - List
 - List
 
 1. One
