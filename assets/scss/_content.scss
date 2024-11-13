@@ -78,6 +78,20 @@ a {
   text-decoration: none;
 }
 
+.bio a:hover {
+  color: $color-link-hover;
+  border-bottom: 1px solid $color-link-hover;
+}
+
+.bio h1, .bio h2, .bio h3, .bio h4, .bio h5, .bio h6 {
+  font-family: Lora, sans-serif;
+  color: $color-text;
+}
+
+.bio ul, .bio ol, .bio pre {
+  color: $color-text;
+}
+
 .text-block {
   margin-top: 0px;
   margin-bottom: 20px;
@@ -94,6 +108,10 @@ a {
   color: $color-text;
   font-size: 16px;
   line-height: 160%;
+}
+
+.list a:hover {
+  color: $color-link-hover;
 }
 
 .credit {
@@ -149,6 +167,10 @@ a {
 
 .credit-links {
   color: $color-credit;
+}
+
+.credit-links:hover {
+  color: $color-link-hover;
 }
 
 .image {
