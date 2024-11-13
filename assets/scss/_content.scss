@@ -7,14 +7,14 @@ html {
 }
 
 a {
-  color: #848d96;
+  color: $color-link;
   text-decoration: none;
 }
 
 .body {
   display: block;
   max-height: 100vh;
-  background-color: #0b1c2f;
+  background-color: $color-background;
   font-family: Inter, sans-serif;
   animation: $animation-name $animation-duration;
 }
@@ -46,7 +46,7 @@ a {
 .name {
   margin-top: 0px;
   margin-bottom: 40px;
-  color: #47bec7;
+  color: $color-name;
   font-size: 16px;
   font-weight: normal;
   line-height: 100%;
@@ -60,7 +60,7 @@ a {
 
 .tagline {
   margin-bottom: 40px;
-  color: #ddd;
+  color: $color-tagline;
   font-size: 58px;
   line-height: 100%;
 }
@@ -68,20 +68,20 @@ a {
 .bio p {
   margin-bottom: 40px;
   font-family: Lora, sans-serif;
-  color: #848d96;
+  color: $color-text;
   font-size: 21px;
   line-height: 140%;
 }
 
 .bio a {
-  border-bottom: 1px solid #848d96;
+  border-bottom: 1px solid $color-text;
   text-decoration: none;
 }
 
 .text-block {
   margin-top: 0px;
   margin-bottom: 20px;
-  color: #485462;
+  color: $color-credit;
   font-size: 12px;
   font-weight: normal;
   line-height: 12px;
@@ -91,13 +91,13 @@ a {
 
 .list {
   font-family: Lora, sans-serif;
-  color: #848d96;
+  color: $color-text;
   font-size: 16px;
   line-height: 160%;
 }
 
 .credit {
-  color: #485462;
+  color: $color-credit;
   font-size: 13px;
 }
 
@@ -148,7 +148,7 @@ a {
 }
 
 .credit-links {
-  color: #485462;
+  color: $color-credit;
 }
 
 .image {
