@@ -6,7 +6,6 @@ This Hugo theme features an image or video visual section as well as a content s
 
 ![Hugo Split Theme screenshot](https://raw.githubusercontent.com/escalate/hugo-split-theme/master/images/screenshot.png)
 
-
 ## Installation
 
 Inside the folder of your Hugo site run:
@@ -18,16 +17,13 @@ $ git clone https://github.com/escalate/hugo-split-theme.git
 
 For more information read the official [setup guide](https://gohugo.io/getting-started/quick-start/) of Hugo.
 
-
 ## Getting started
 
 After installing the Split theme successfully it requires a just a few more steps to get your site finally running.
 
-
 ### The config file
 
 Take a look inside the [`tests`](https://github.com/escalate/hugo-split-theme/tree/master/tests) folder of this theme. You'll find some example configurations. To use one of them, copy the `hugo.toml` in the root folder of your Hugo site. Feel free to customize this theme as you like.
-
 
 ### Add content
 
@@ -48,7 +44,6 @@ tagline = "Designer. Stylist. Nomad."
 Donec at libero id lectus porta dapibus eu in nibh. Cras id mauris sapien. Fusce viverra [luctus urna]({{< ref "long-text.md" >}}) ac rutrum. Duis semper elit eu mi facilisis eleifend. Donec semper, [ipsum in]({{< ref "commonmark.md" >}}) malesuada congue, purus sem ullamcorper massa, sit amet lacinia nibh enim sed massa.
 ```
 
-
 #### Additional pages
 
 You can create additional pages as usual inside content directory.
@@ -64,7 +59,6 @@ title = "Long Text"
 
 Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. Donec elit libero, sodales nec, volutpat a, suscipit non, turpis. Nullam sagittis. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc.
 ```
-
 
 ### Use an image
 
@@ -87,7 +81,6 @@ visual.image.enable = false
 # Privacy statement
 ```
 
-
 ### Use a video
 
 First, disable the image by setting `enable` to `false` in `[params.visual.image]`.
@@ -97,7 +90,6 @@ Second, enable the video by setting `enable` to `true` in `[params.visual.video]
 You can either use a video that you host or one that is on YouTube.
 
 Just like with [an image](#use-an-image) you can not display a video altogether on particular pages by setting `visual.video.enable = false` in the page's FrontMatter.
-
 
 ##### Use your own video
 
@@ -114,7 +106,6 @@ Add your video to the `static` folder and change `file` to the location of your 
   # youtubeId = "dk9uNWPP7EA"
 ```
 
-
 ##### Use a YouTube video
 
 Get the ID of the YouTube video and add it to `youtubeId`. Make sure you delete `file` or comment it out.
@@ -130,7 +121,6 @@ Get the ID of the YouTube video and add it to `youtubeId`. Make sure you delete 
   youtubeId = "dk9uNWPP7EA"
 ```
 
-
 ##### Add Custom CSS
 
 Put custom css styles in static/css/style.css and enable this css in the config:
@@ -140,11 +130,9 @@ Put custom css styles in static/css/style.css and enable this css in the config:
   enable = true
 ```
 
-
 ##### Additional settings
 
 Set `mute` to `true` if you want the video to play muted and `false` if you want the sound. The video is coded to autoplay and loop. If you want to change that the code can be found in [`layouts/partials/video.html`](https://github.com/escalate/hugo-split-theme/tree/master/layouts/partials/video.html).
-
 
 ### Add links
 
@@ -173,7 +161,6 @@ This is what generates one link list:
       url = "#"
 ```
 
-
 ### Add metadata
 
 `author` and `description` metadata helps search engines with how to display your site in search results. `shareImage` and `twitterHandle` help improves how your content is displayed when your site is shared across social media sites.
@@ -186,22 +173,21 @@ This is what generates one link list:
   twitterHandle = "onepagelove"
 ```
 
-
 ### Add favicon
+
 Replace [`static/favicon.ico`](https://github.com/escalate/hugo-split-theme/tree/master/static/favicon.ico) with your favicon. If you don't want just delete `favicon.ico` and the line below.
 
 ```toml
 favicon = "favicon.ico"
 ```
 
-
 ### Add copyright
+
 Set `copyright` with the text you want for your copyright.
 
 ```toml
 copyright = "&copy;2024 Your Name"
 ```
-
 
 ### Add Google Analytics
 
@@ -213,7 +199,6 @@ Enable Google Analytics by adding your tracking id to `services.googleAnalytics`
     ID = "UA-XXXXXXXX-1"
 ```
 
-
 ### Nearly finished
 
 In order to see your site in action, run Hugo's built-in local server.
@@ -224,11 +209,9 @@ $ hugo server
 
 Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your browser.
 
-
 ## Contributing
 
 Did you found a bug or got an idea for a new feature? Feel free to use the [issue tracker](https://github.com/escalate/hugo-split-theme/issues) to let me know. Or make directly a [pull request](https://github.com/escalate/hugo-split-theme/pulls). See also the [Contributing](./CONTRIBUTING.md) notes.
-
 
 ## License
 
@@ -240,7 +223,6 @@ To deactivate the license text after purchase, set the value of the variable `li
 [params]
   licensed = true
 ```
-
 
 ## Annotations
 

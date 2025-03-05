@@ -1,9 +1,45 @@
+yaml-files:
+  - "*.yaml"
+  - "*.yml"
+  - .yamllint
+
+ignore-from-file:
+  - .gitignore
+  - .yamlignore
+
 extends: default
 
 rules:
+  anchors: enable
+  braces: enable
+  brackets: enable
+  colons: enable
+  commas: enable
   comments:
     min-spaces-from-content: 1
-  comments-indentation: false
+  comments-indentation: disable
+  document-end:
+    present: false
   document-start:
     present: false
-  line-length: false
+  empty-lines: enable
+  empty-values: disable
+  float-values:
+    require-numeral-before-decimal: true
+  hyphens: enable
+  indentation:
+    indent-sequences: consistent
+    spaces: 2
+  key-duplicates: enable
+  key-ordering: disable
+  line-length: disable
+  new-line-at-end-of-file: enable
+  new-lines: enable
+  octal-values:
+    forbid-explicit-octal: true
+    forbid-implicit-octal: true
+  quoted-strings:
+    quote-type: any
+    required: false
+  trailing-spaces: enable
+  truthy: enable
