@@ -7,7 +7,16 @@ indent_size = 2
 indent_style = space
 trim_trailing_whitespace = true
 
+[.gitmodules]
+indent_style = tab
+
 [Makefile*]
+indent_style = tab
+
+[go.mod]
+indent_style = tab
+
+[*.go]
 indent_style = tab
 
 [*.py]

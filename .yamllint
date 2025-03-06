@@ -11,7 +11,9 @@ extends: default
 
 rules:
   anchors: enable
-  braces: enable
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
   brackets: enable
   colons: enable
   commas: enable
