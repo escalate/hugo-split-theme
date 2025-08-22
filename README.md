@@ -62,7 +62,7 @@ Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitu
 
 ### Use an image
 
-Set `enable` to `true`. Add your image to the `static` folder and change `file` to the location of your image accordingly. By default the image position is centered, however you can specify your own by supplying `position` with a valid CSS position.
+Set `enable` to `true`. Add your image to the `static` folder and change `file` to the location of your image accordingly. By default the image position is centered, however you can specify your own by supplying `position` with a valid CSS position e.g. `center center` or `50% 0%`.
 
 ```toml
 [[params.visual.image]]
@@ -80,6 +80,10 @@ visual.image.enable = false
 
 # Privacy statement
 ```
+
+#### Hints for image selection
+
+The person in the image should ideally be centered. There should also be space to the right and left of the person in the image so that it fits perfectly on all screen resolutions. Optimizing the image position via CSS should be started in the mobile view. After that, the tablet and desktop views should be refined.
 
 ### Use a video
 
