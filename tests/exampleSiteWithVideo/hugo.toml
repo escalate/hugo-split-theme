@@ -1,6 +1,6 @@
 # Site settings
 baseURL = "https://example.com"
-languageCode = "en-US"
+locale = "en-US"
 title = "Split - HTML Template Demo"
 theme = "hugo-split-theme"
 disableKinds = ["section", "taxonomy", "RSS", "sitemap"]
