@@ -1,3 +1,5 @@
+@use "split";
+
 //-------------------------------------------------------------------------------
 // Content
 //-------------------------------------------------------------------------------
@@ -7,16 +9,16 @@ html {
 }
 
 a {
-  color: $color-link;
+  color: split.$color-link;
   text-decoration: none;
 }
 
 .body {
   display: block;
   max-height: 100vh;
-  background-color: $color-background;
+  background-color: split.$color-background;
   font-family: Inter, sans-serif;
-  animation: $animation-name $animation-duration;
+  animation: split.$animation-name split.$animation-duration;
 }
 
 .leftcontent {
@@ -46,7 +48,7 @@ a {
 .name {
   margin-top: 0px;
   margin-bottom: 40px;
-  color: $color-name;
+  color: split.$color-name;
   font-size: 16px;
   font-weight: normal;
   line-height: 100%;
@@ -60,7 +62,7 @@ a {
 
 .tagline {
   margin-bottom: 40px;
-  color: $color-tagline;
+  color: split.$color-tagline;
   font-size: 58px;
   line-height: 100%;
 }
@@ -68,19 +70,19 @@ a {
 .bio p {
   margin-bottom: 40px;
   font-family: Lora, sans-serif;
-  color: $color-text;
+  color: split.$color-text;
   font-size: 21px;
   line-height: 140%;
 }
 
 .bio a {
-  border-bottom: 1px solid $color-text;
+  border-bottom: 1px solid split.$color-text;
   text-decoration: none;
 }
 
 .bio a:hover {
-  color: $color-link-hover;
-  border-bottom: 1px solid $color-link-hover;
+  color: split.$color-link-hover;
+  border-bottom: 1px solid split.$color-link-hover;
 }
 
 .bio h1,
@@ -90,19 +92,19 @@ a {
 .bio h5,
 .bio h6 {
   font-family: Lora, sans-serif;
-  color: $color-text;
+  color: split.$color-text;
 }
 
 .bio ul,
 .bio ol,
 .bio pre {
-  color: $color-text;
+  color: split.$color-text;
 }
 
 .text-block {
   margin-top: 0px;
   margin-bottom: 20px;
-  color: $color-credit;
+  color: split.$color-credit;
   font-size: 12px;
   font-weight: normal;
   line-height: 12px;
@@ -112,17 +114,17 @@ a {
 
 .list {
   font-family: Lora, sans-serif;
-  color: $color-text;
+  color: split.$color-text;
   font-size: 16px;
   line-height: 160%;
 }
 
 .list a:hover {
-  color: $color-link-hover;
+  color: split.$color-link-hover;
 }
 
 .credit {
-  color: $color-credit;
+  color: split.$color-credit;
   font-size: 13px;
 }
 
@@ -173,11 +175,11 @@ a {
 }
 
 .credit-links {
-  color: $color-credit;
+  color: split.$color-credit;
 }
 
 .credit-links:hover {
-  color: $color-link-hover;
+  color: split.$color-link-hover;
 }
 
 .image {
@@ -201,7 +203,7 @@ a {
   object-fit: cover;
 }
 
-@media screen and (max-width: $bp-smallish) {
+@media screen and (max-width: split.$bp-smallish) {
   .leftcontent {
     display: block;
     -o-object-position: 50% 0%;
@@ -246,7 +248,7 @@ a {
   }
 }
 
-@media screen and (max-width: $bp-tablet) {
+@media screen and (max-width: split.$bp-tablet) {
   .name {
     margin-bottom: 20px;
   }
@@ -256,7 +258,7 @@ a {
   }
 }
 
-@media screen and (max-width: $bp-mobile) {
+@media screen and (max-width: split.$bp-mobile) {
   .bold-text {
     font-size: 42px;
     line-height: 42px;
@@ -329,7 +331,7 @@ video.video {
   height: 100%;
 }
 
-@media (min-width: $bp-smallish) {
+@media (min-width: split.$bp-smallish) {
   video.video {
     height: 100vh;
   }

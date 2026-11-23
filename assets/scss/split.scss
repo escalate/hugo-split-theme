@@ -28,8 +28,8 @@ $animation-duration : 2s;
 // Imports
 //-------------------------------------------------------------------------------
 
-@import "normalize";
-@import "webflow";
-@import "animation";
-@import "fonts";
-@import "content";
+@use "normalize";
+@use "webflow";
+@use "animation";
+@use "fonts";
+@use "content";
